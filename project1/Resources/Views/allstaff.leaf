@@ -1,0 +1,11 @@
+<p>Chose a staff member to view</p>
+<ul class="list-group">
+#for(currentName in allNames) {
+#if(currentName == name) {
+<li class="list-group-item active"><a href="/staff/#(currentName)" class="text-light">#capitalize(currentName)</a></li>
+
+} else {
+<li class="list-group-item"><a href="/staff/#(currentName)" class="text-primary">#capitalize(currentName)</a></li>
+}
+}
+</ul>

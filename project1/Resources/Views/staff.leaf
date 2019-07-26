@@ -1,0 +1,6 @@
+#set("h1") {Staff}
+#set("title") {Staff}
+#set("body") {
+#embed("allstaff")
+}
+#embed("master")
