@@ -7,6 +7,8 @@
 
 import Foundation
 import Vapor
+import Fluent
+import FluentSQLite
 
 struct Poll {
     var id: UUID?
@@ -18,3 +20,7 @@ struct Poll {
 }
 
 extension Poll: Content { }
+
+extension Poll: SQLiteUUIDModel { }
+
+extension Poll: Migration { }
