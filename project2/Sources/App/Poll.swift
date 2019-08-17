@@ -24,3 +24,7 @@ extension Poll: Content { }
 extension Poll: SQLiteUUIDModel { }
 
 extension Poll: Migration { }
+
+extension Poll: Parameter {
+    
+}
