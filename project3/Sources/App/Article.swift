@@ -18,13 +18,16 @@ struct Article {
 }
 
 extension Article: Parameter {
+
     static func resolveParameter(_ parameter: String, on container: Container) throws -> Future<Article?> {
         if let id = Int(parameter) {
-            return Future.map(on: container) { Article(id: id) }
+            return Future.map(on: container) {
+                return Article(id: id)
+            }
         } else {
             throw Abort(.badRequest)
         }
-    }
+    }    
 }
 
 extension Article: Content { }

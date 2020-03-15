@@ -25,6 +25,4 @@ extension Poll: SQLiteUUIDModel { }
 
 extension Poll: Migration { }
 
-extension Poll: Parameter {
-    
-}
+extension Poll: Parameter { }

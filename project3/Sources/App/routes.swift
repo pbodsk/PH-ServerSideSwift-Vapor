@@ -15,9 +15,9 @@ public func routes(_ router: Router) throws {
         let integer = try req.parameters.next(Int.self)
         return "I got this string: \(string) and this int: \(integer)"
     }
-    
+        
     router.get("articles", Article.parameter) { req -> Future<Article> in
-        let article =  try req.parameters.next(Article.self)
+        let article = try req.parameters.next(Article.self)
         return article.map(to: Article.self) { article in
             guard let article = article else {
                 throw Abort(.badRequest)
@@ -36,16 +36,27 @@ public func routes(_ router: Router) throws {
         }
     }
     
-    router.group("article", Int.parameter) { group in
-        group.get("read") { req -> String in
-            let num = try req.parameters.next(Int.self)
-            return "Reading article number \(num)"
-        }
-        
-        group.get("edit") { req -> String in
-            let num = try req.parameters.next(Int.self)
-            return "Editing article number \(num)"
-        }
+//    router.group("article", Int.parameter) { group in
+//        group.get("read") { req -> String in
+//            let num = try req.parameters.next(Int.self)
+//            return "Reading article number \(num)"
+//        }
+//        
+//        group.get("edit") { req -> String in
+//            let num = try req.parameters.next(Int.self)
+//            return "Editing article number \(num)"
+//        }
+//    }
+    
+    let article = router.grouped("article", Int.parameter)
+    article.get("read") { req -> String in
+        let num = try req.parameters.next(Int.self)
+        return "Reading article number \(num)"
+    }
+
+    article.get("edit") { req -> String in
+        let num = try req.parameters.next(Int.self)
+        return "Editing article number \(num)"
     }
     
     //Add a collection
