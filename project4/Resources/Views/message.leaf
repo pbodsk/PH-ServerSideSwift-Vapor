@@ -1,0 +1,25 @@
+#set("title") { #(message.title) - #(forum.name) }
+
+#set("body") {
+    <h1>#(message.name)</h1>
+    <h2>Posted by: #(message.user) on #date(message.date, "EEEE MMMM dd. yyyy - HH:mm")</h2>
+    
+    <p>#(message.body)</p>
+    
+    #if(replies) {
+        #for(reply in replies) {
+            <h4>Reply from #(reply.user) on #date(message.date, "EEEE MMMM dd. yyyy - HH:mm")</h4>
+            <p>#(reply.body)</p>
+        }
+    }
+    
+    <form method="post">
+        <h3>Add new reply</h3>
+        <input type="hidden" name="title" value="Reply" />
+        <p><textarea name="body" class="form-control" rows=5></textarea></p>
+        <p><button type=submit class="btn btn-lg btn-primary">Post</button></p>
+    </form>
+}
+
+#embed("master")
+

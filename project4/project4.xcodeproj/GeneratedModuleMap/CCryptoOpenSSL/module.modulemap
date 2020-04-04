@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/pebo/Programming/Nodes/Experiments/Vapor/PH-ServerSideSwift-Vapor/project4/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
