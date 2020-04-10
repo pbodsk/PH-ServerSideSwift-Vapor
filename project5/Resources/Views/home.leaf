@@ -1,0 +1,21 @@
+#set("title") { Home }
+
+#set("body") {
+    <h1>Files</h1>
+    
+    #for(file in files) {
+    <form method="post" action="/delete" class="form-inline">
+        <a href="uploads/originals/#(file)" target="_blank"><img src="/uploads/thumbs/#(file)" style="border: 1px solid black; margin: 20px;" /></a>
+        <input type="hidden" name="fileName" value="#(file)">
+        <p><input type="submit" class="btn btn-primary mb-2" value="Delete image" /></p>
+    </form>
+
+    }
+    
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <p><input type="file" name="upload[]" multiple/></p>
+        <p><input type="submit" class="btn" value="Upload image" /></p>
+    </form>
+}
+
+#embed("master")
